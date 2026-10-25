@@ -1,4 +1,4 @@
-﻿# Amine Touihri
+# Amine Touihri
 
 Final-year Artificial Intelligence engineering student at ESPRIT, Tunisia.
 I am looking for a PFE internship in applied machine learning, computer vision, or backend engineering.
