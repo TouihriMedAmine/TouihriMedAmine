@@ -2,7 +2,6 @@
 
 Final-year Artificial Intelligence engineering student at ESPRIT, Tunisia, interested in building and evaluating applied machine learning systems. My work spans computer vision and explainable AI, audio classification and retrieval, and ML-backed applications.
 
-I am looking for a PFE internship focused on applied machine learning, computer vision, or backend engineering.
 
 ## Technical Focus
 
@@ -117,7 +116,7 @@ Clone instructions are available in the project README. The repository does not 
 
 **Machine Learning & Deep Learning:** PyTorch, TensorFlow/Keras
 
-**Computer Vision & Audio:** Grad-CAM, U-Net, ConvLSTM, librosa, MFCCs, spectral fingerprinting
+**Computer Vision & Audio:**OpenCV, Grad-CAM, U-Net, ConvLSTM, librosa, MFCCs, spectral fingerprinting
 
 **Backend & Frontend:** Django REST Framework, React
 
