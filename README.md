@@ -22,14 +22,8 @@ HAM10000 is CC BY-NC-SA 4.0 and is not redistributed here.
 ### [FairPlay.ai](https://github.com/TouihriMedAmine/FairPlay.ai)
 
 Live monitor for radio airplay. A 5-second MFCC model decides whether a window is music, then a local fingerprint index names the song, with Shazam as the fallback.
-On a second Kaggle folder, 100 music clips and 100 non-music clips, the notebook log shows 199 correct. The line that prints 1.00 is a 20% split of the training set used as validation during training.
-The checkpoint is private. That notebook run uses 22,050 Hz; the live detector uses 16,000 Hz.
-
-### MED-CASE (private)
-
-Django and React platform where a student works a clinical case and a teacher publishes the grade.
-Keyword, summary, concept-map, and diagnosis scores are deterministic. A local Ollama model writes a separate reasoning review and does not replace that score.
-I can walk through the code in an interview. The classroom cases stay private.
+The model was tested on 200 audio segments that it never seen before, the results were 199/200.
+The checkpoint is private. 
 
 ### [Water-Scarcity](https://github.com/TouihriMedAmine/Water-Scarcity)
 
