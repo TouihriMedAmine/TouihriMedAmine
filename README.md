@@ -115,32 +115,6 @@ The app ships as a portable PyInstaller build with a tray menu, global shortcuts
 
 **Evaluation limitations:** One user, one desk, and one camera, tested two minutes after calibration. Cues sat in the middle of each monitor, so screen edges and posture drift over a day are not covered, and 30 cues is a small sample. The cue-to-selection time includes my own reaction and head movement. The slow tail of the focus latency is mostly deliberate: focus is not taken while I am typing. The tracker works at monitor level, not as a pixel-level gaze estimate.
 
-### MED-CASE (Private)
-
-A clinical-case learning platform built with Django REST Framework and React for medical students and teachers.
-
-Students work through clinical cases, while teachers publish grades and review student performance.
-
-The evaluation pipeline combines deterministic scoring for keywords, summaries, concept maps, and diagnoses. A locally hosted Ollama model generates a separate review to provide additional feedback without replacing or modifying the deterministic score.
-
-The application and classroom cases are private. I can discuss the architecture, implementation, and engineering decisions in an interview.
-
-### [Water-Scarcity](https://github.com/TouihriMedAmine/Water-Scarcity)
-
-A team project developed for the ESPRIT AI Project course and presented at the ESPRIT Tech Fair 2025.
-
-My contributions focused on surface-runoff forecasting, deforestation-mask inference, and drought inference.
-
-- **[Surface-runoff forecasting](https://github.com/TouihriMedAmine/Water-Scarcity/tree/main/WaterScarcity/runoff):** ConvLSTM-based inference using the `best_qs_only.pth` checkpoint.
-- **[Deforestation-mask inference](https://github.com/TouihriMedAmine/Water-Scarcity/blob/main/WaterScarcity/Watershed/views.py):** U-Net inference with four input channels and one output mask channel, visualized over NDVI.
-- **[Drought inference](https://github.com/TouihriMedAmine/Water-Scarcity/tree/main/WaterScarcity/Drought):** Inference using the `drought-prediction.h5` checkpoint.
-
-The application loads trained checkpoints; the repository does not include the original training loops or a held-out evaluation metrics table.
-
-Water-level monitoring, irrigation, precipitation, and the chatbot were developed by teammates Maher Abderrahim and Houssem Bench.
-
-Clone instructions are available in the project README. The repository does not currently include a pinned `requirements.txt`.
-
 ## Technical Stack
 
 **Languages:** Python
