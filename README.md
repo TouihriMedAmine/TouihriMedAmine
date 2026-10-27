@@ -6,6 +6,7 @@ Final-year Artificial Intelligence engineering student at ESPRIT, Tunisia, inter
 ## Technical Focus
 
 - **Computer Vision & Explainable AI:** Lesion-grouped evaluation, model calibration, Grad-CAM, and segmentation-mask overlap metrics.
+- **Real-Time Computer Vision Applications:** Webcam gaze estimation with per-user calibration, turned into a packaged Windows desktop tool.
 - **Audio Classification & Retrieval:** Music detection using MFCC features, followed by spectral-fingerprint matching for live radio monitoring.
 - **Backend & Full-Stack Engineering:** Django REST Framework and React applications integrating machine learning and AI-assisted workflows.
 
@@ -84,6 +85,36 @@ During my live testing, the system has not missed a song so far. This is an info
 
 The fingerprint tests can be run from `audio_engine/` using `pytest`. Classifier weights are maintained in a private repository; installation instructions are available in the project README.
 
+### [GazeSwitch](https://github.com/TouihriMedAmine/GazeSwitch)
+
+A Windows tray app that uses an ordinary webcam to give keyboard focus to the window on whichever of three monitors I am looking at.
+
+**How it works**
+
+1. **Tracking:** MediaPipe Face Landmarker (478 landmarks) runs at about 38 fps; each frame yields head yaw and iris position relative to the eye corners.
+2. **Per-user gaze model:** A guided calibration visits the left, center, and right monitors while the user keeps their eyes on each one and moves their head. A regularised least-squares fit then learns how much the eyes compensate for head rotation, so a head turned left with eyes on the center screen still counts as center. On my setup the fitted iris weight is about ten times the head-yaw weight, the opposite of the fixed formula it replaced.
+3. **Selection and focus:** A time-windowed vote with dwell and hysteresis picks the monitor; Win32 calls then focus the front-most window on it, working around the Windows foreground lock.
+
+The app ships as a portable PyInstaller build with a tray menu, global shortcuts, and live camera switching. 107 offline tests run with `pytest`.
+
+**Evaluation**
+
+`scripts/evaluate_gaze.py` shows a cue on a random monitor (never the same one twice in a row) and records which monitor the app selects 2.5 s later. One run on 27 October 2026:
+
+| Looked at \ Detected | Left | Center | Right | Unknown |
+|---|---:|---:|---:|---:|
+| Left | 10 | 0 | 0 | 0 |
+| Center | 0 | 10 | 0 | 0 |
+| Right | 0 | 0 | 10 | 0 |
+
+| Metric | Result |
+|---|---:|
+| Monitor accuracy | 30 / 30 |
+| Cue → monitor selected (median, p90) | 1.51 s, 1.75 s |
+| Selection → window focused (median, p90; 305 switches in daily use) | 208 ms, 1097 ms |
+
+**Evaluation limitations:** One user, one desk, and one camera, tested two minutes after calibration. Cues sat in the middle of each monitor, so screen edges and posture drift over a day are not covered, and 30 cues is a small sample. The cue-to-selection time includes my own reaction and head movement. The slow tail of the focus latency is mostly deliberate: focus is not taken while I am typing. The tracker works at monitor level, not as a pixel-level gaze estimate.
+
 ### MED-CASE (Private)
 
 A clinical-case learning platform built with Django REST Framework and React for medical students and teachers.
@@ -116,11 +147,11 @@ Clone instructions are available in the project README. The repository does not 
 
 **Machine Learning & Deep Learning:** PyTorch, TensorFlow/Keras
 
-**Computer Vision & Audio:**OpenCV, Grad-CAM, U-Net, ConvLSTM, librosa, MFCCs, spectral fingerprinting
+**Computer Vision & Audio:** OpenCV, MediaPipe, Grad-CAM, U-Net, ConvLSTM, librosa, MFCCs, spectral fingerprinting
 
 **Backend & Frontend:** Django REST Framework, React
 
-**Testing & Deployment:** pytest, local inference with Ollama
+**Testing & Deployment:** pytest, local inference with Ollama, PyInstaller
 
 ## Contact
 
